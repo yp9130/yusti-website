@@ -1,1 +1,1056 @@
-# yusti-website
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Kreatif & Energik - [Nama Anda]</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT_ID.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* Variabel Warna dan Font */
+        :root {
+            --primary-bg: #F0F2F5; /* Latar belakang terang (abu muda) */
+            --secondary-bg: #FFFFFF; /* Latar belakang bagian (putih bersih) */
+            --accent-start: #FF7E5F; /* Coral cerah */
+            --accent-end: #FEB47B;   /* Orange lembut */
+            --accent-text: #FF7E5F;  /* Warna teks untuk accent */
+            --text-dark: #333333; /* Teks gelap untuk kontras */
+            --text-light-subtle: #6C757D; /* Teks abu-abu untuk detail */
+            --card-shadow: rgba(0, 0, 0, 0.08); /* Bayangan kartu lembut */
+            --border-radius-lg: 15px;
+            --border-radius-sm: 8px;
+            --transition-speed: 0.5s;
+
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        /* Reset CSS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--primary-bg);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* Header / Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-start), var(--accent-end)); /* Gradien cerah */
+            position: relative;
+            overflow: hidden;
+            padding: 50px 0;
+            color: white; /* Teks putih di atas gradien */
+            position: relative;
+        }
+
+        /* Efek partikel latar belakang (opsional, bisa dihapus jika terlalu berat) */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;charset=UTF-8,%3Csvg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath fill="%23ffffff" fill-opacity="0.1" d="M0 0h16v16H0z"/%3E%3C/svg%3E') repeat;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSlideUp 1.2s ease-out forwards;
+            animation-delay: 0.8s;
+            position: relative;
+        }
+
+        @keyframes fadeInSlideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-pic-hero {
+            width: 250px; /* Lebih besar dari sebelumnya */
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid rgba(255, 255, 255, 0.7); /* Border putih semi-transparan */
+            box-shadow: 0 0 40px rgba(255, 126, 95, 0.6), 0 0 80px rgba(254, 180, 123, 0.4); /* Cahaya dari gradien */
+            margin: 0 auto 35px auto;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            cursor: pointer;
+        }
+
+        .profile-pic-hero:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 0 50px rgba(255, 126, 95, 0.8), 0 0 100px rgba(254, 180, 123, 0.6);
+        }
+
+        .profile-pic-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 5.5rem; /* Ukuran lebih besar */
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-content p {
+            font-family: var(--font-body);
+            font-size: 1.8rem; /* Ukuran lebih besar */
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigasi Utama */
+        nav {
+            background-color: var(--secondary-bg);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px var(--card-shadow);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 35px; /* Jarak lebih sedikit */
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: var(--text-dark); /* Teks gelap di nav terang */
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px 22px;
+            border-radius: var(--border-radius-sm);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden; /* Untuk efek hover */
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+            transition: left 0.3s ease-in-out;
+            z-index: -1;
+            border-radius: var(--border-radius-sm);
+        }
+
+        nav ul li a:hover::before,
+        nav ul li a.active::before {
+            left: 0;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: white; /* Teks putih saat hover/active */
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(255, 126, 95, 0.3);
+        }
+
+        /* Konten Utama */
+        main {
+            padding: 80px 0 60px 0; /* Padding atas lebih besar */
+        }
+
+        /* Gaya Umum untuk Setiap Bagian (Section) */
+        section {
+            background-color: var(--secondary-bg);
+            margin-bottom: 60px; /* Margin lebih besar */
+            padding: 70px; /* Padding lebih besar */
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 12px 35px var(--card-shadow);
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Kurva animasi lebih menarik */
+        }
+
+        section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Judul H2 di Setiap Bagian */
+        section h2 {
+            font-family: var(--font-heading);
+            color: var(--accent-text); /* Warna teks accent */
+            font-size: 4rem; /* Ukuran lebih besar */
+            margin-bottom: 45px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 25px;
+            background: linear-gradient(45deg, var(--accent-start), var(--accent-end)); /* Gradien untuk judul */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block; /* Agar gradien berlaku pada teks saja */
+            margin: 0 auto 45px auto; /* Centered */
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 140px; /* Lebih lebar */
+            height: 6px; /* Lebih tebal */
+            background: linear-gradient(90deg, var(--accent-end), var(--accent-start)); /* Gradien underline */
+            border-radius: 3px;
+        }
+
+        section p {
+            font-family: var(--font-body);
+            font-size: 1.2rem; /* Ukuran teks lebih nyaman */
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* Detail Data Diri */
+        .personal-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .detail-item {
+            background-color: var(--primary-bg); /* Latar belakang item abu muda */
+            padding: 35px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 6px 20px var(--card-shadow);
+            display: flex;
+            align-items: flex-start; /* Mengatur alignment ke atas */
+            gap: 28px;
+            border: 1px solid rgba(0, 0, 0, 0.05); /* Border sangat tipis */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .detail-item:hover {
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .detail-item i {
+            font-size: 3.2rem; /* Ukuran ikon lebih besar */
+            background: linear-gradient(45deg, var(--accent-start), var(--accent-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            flex-shrink: 0;
+            margin-top: -5px; /* Menyesuaikan posisi ikon */
+        }
+
+        .detail-item div {
+            text-align: left;
+        }
+
+        .detail-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .detail-item p {
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+            color: var(--text-light-subtle);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* Hobi (Hobbies Grid) */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .hobby-card {
+            background-color: var(--primary-bg);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 25px var(--card-shadow);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; /* Efek spring */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hobby-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255, 126, 95, 0.1), rgba(254, 180, 123, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .hobby-card:hover::before {
+            opacity: 1;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .hobby-card i {
+            font-size: 4.5rem;
+            background: linear-gradient(45deg, var(--accent-start), var(--accent-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+        .hobby-card:hover i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .hobby-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hobby-card p {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-light-subtle);
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Riwayat Pendidikan (Timeline) */
+        .education-timeline {
+            position: relative;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 5px; /* Lebih tebal */
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-start), var(--accent-end)); /* Gradien timeline */
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .education-entry {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px; /* Jarak lebih besar */
+            position: relative;
+        }
+
+        .education-content {
+            width: 46%; /* Sedikit lebih lebar */
+            background-color: var(--primary-bg);
+            padding: 35px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 25px var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+        }
+
+        .education-content:hover {
+            transform: translateY(-12px);
+            background-color: var(--secondary-bg); /* Berubah menjadi putih saat hover */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .education-entry:nth-child(odd) .education-content {
+            margin-right: 4%;
+        }
+
+        .education-entry:nth-child(even) .education-content {
+            margin-left: 4%;
+        }
+
+        .education-entry::after {
+            content: '';
+            position: absolute;
+            width: 25px; /* Lingkaran lebih besar */
+            height: 25px;
+            background: linear-gradient(45deg, var(--accent-start), var(--accent-end));
+            border: 5px solid var(--primary-bg); /* Border warna latar belakang item */
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(255, 126, 95, 0.4);
+        }
+
+        .education-content h3 {
+            font-family: var(--font-heading);
+            color: var(--text-dark);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .education-content .degree {
+            font-family: var(--font-body);
+            font-weight: 700;
+            color: var(--accent-text); /* Warna accent */
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .education-content .period {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-light-subtle);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .education-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .education-content ul li {
+            position: relative;
+            padding-left: 30px; /* Padding lebih besar untuk bullet */
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .education-content ul li::before {
+            content: '\2022'; /* Bullet point */
+            color: var(--accent-text);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+            font-size: 1.3em;
+            line-height: 1;
+        }
+
+        /* Kontak */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-button {
+            background: linear-gradient(45deg, var(--accent-start), var(--accent-end));
+            color: white;
+            padding: 20px 40px; /* Lebih besar */
+            border-radius: var(--border-radius-lg);
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.3s ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 8px 20px rgba(255, 126, 95, 0.4);
+            border: none; /* Hilangkan border default */
+        }
+
+        .contact-button:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(255, 126, 95, 0.6);
+            background: linear-gradient(45deg, #FF6B50, #FEA060); /* Sedikit lebih gelap saat hover */
+        }
+
+        .contact-button i {
+            font-size: 1.8rem; /* Ukuran ikon lebih besar */
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px;
+            margin-top: 70px;
+            background-color: var(--secondary-bg);
+            color: var(--text-light-subtle);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-top: 1px solid rgba(0, 0, 0, 0.03);
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0; /* Radius hanya di atas */
+        }
+
+        /* --- LIGHTBOX (GALERI FOTO POP-UP) --- */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Lebih gelap */
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            cursor: pointer;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            background-color: var(--secondary-bg);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            max-width: 90%; /* Lebih lebar */
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.6); /* Animasi pop-in */
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s ease; /* Efek spring */
+        }
+
+        .lightbox-overlay.active .lightbox-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3.5rem; /* Ukuran lebih besar */
+            color: var(--text-dark); /* Warna gelap */
+            cursor: pointer;
+            z-index: 10000;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-start); /* Warna accent saat hover */
+            transform: rotate(90deg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ukuran item lebih besar */
+            gap: 25px;
+            padding: 25px;
+            justify-content: center;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 200px; /* Lebih besar */
+            overflow: hidden;
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 3px solid rgba(255, 126, 95, 0.3); /* Border semi-transparan */
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.1); /* Zoom lebih besar */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-color: var(--accent-start);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Responsivitas */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 4.5rem;
+            }
+            .hero-content p {
+                font-size: 1.6rem;
+            }
+            section {
+                padding: 50px;
+                margin-bottom: 40px;
+            }
+            section h2 {
+                font-size: 3.5rem;
+            }
+            .education-content {
+                width: 48%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            .hero-content p {
+                font-size: 1.4rem;
+            }
+            .profile-pic-hero {
+                width: 200px;
+                height: 200px;
+            }
+            nav ul {
+                gap: 12px;
+                padding: 10px;
+            }
+            nav ul li a {
+                font-size: 0.95rem;
+                padding: 8px 15px;
+            }
+            section {
+                padding: 30px;
+                margin-bottom: 30px;
+            }
+            section h2 {
+                font-size: 2.8rem;
+                margin-bottom: 30px;
+            }
+            .personal-details-grid, .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+            .detail-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 15px;
+                padding: 25px;
+            }
+            .detail-item i {
+                margin-bottom: 0;
+            }
+            .education-timeline::before {
+                left: 20px;
+            }
+            .education-entry {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 35px;
+            }
+            .education-content {
+                width: 100%;
+                margin: 0;
+                margin-top: 25px;
+                padding: 25px;
+            }
+            .education-entry::after {
+                left: 20px;
+                top: 0;
+                transform: translate(-50%, -50%);
+            }
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .lightbox-content {
+                max-width: 95%;
+                padding: 20px;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            .gallery-item {
+                height: 140px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+                letter-spacing: normal;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .profile-pic-hero {
+                width: 160px;
+                height: 160px;
+            }
+            section h2 {
+                font-size: 2.2rem;
+            }
+            .detail-item h3 {
+                font-size: 1.5rem;
+            }
+            .detail-item p {
+                font-size: 1rem;
+            }
+            .hobby-card h3 {
+                font-size: 1.6rem;
+            }
+            .education-content h3 {
+                font-size: 1.8rem;
+            }
+            .education-content .degree {
+                font-size: 1.1rem;
+            }
+            .contact-button {
+                font-size: 1.1rem;
+                padding: 15px 30px;
+            }
+            .lightbox-close {
+                font-size: 2.5rem;
+                top: 15px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="profile-pic-hero" id="profilePicHero">
+                <img src="C:\Users\ZYREX\Pictures\387cb84a-bf9a-4ec2-b045-901d74ea8535.jfif" alt="Foto Profil Utama">
+            </div>
+            <h1>Halo! Saya Yusti Pattiasina</h1>
+            <p>WELCOME!</p>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#about" class="active">Tentang Saya</a></li>
+            <li><a href="#personal-data">Data Diri</a></li>
+            <li><a href="#hobbies">Hobi</a></li>
+            <li><a href="#education">Pendidikan</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h2>Tentang Saya</h2>
+            <p>Perkenalkan Saya Yusti Pattiasina, seorang mahasiswa yang berdomisili di Kec, Nusaniwe Ambon, Maluku. Saya memiliki minat yang kuat dalam teknologi.</p>
+        </section>
+
+        <section id="personal-data">
+            <h2>Data Diri</h2>
+            <div class="personal-details-grid">
+                <div class="detail-item">
+                    <i class="fas fa-user-circle"></i>
+                    <div>
+                        <h3>Nama Lengkap</h3>
+                        <p>Yusti Pattisina</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <h3>Tanggal Lahir</h3>
+                        <p>Masohi, 19 Maret 2005]</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Asal</h3>
+                        <p>Booi, Pulau Saparua Maluku Tenggah</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h3>Telepon</h3>
+                        <p>[082198282010]</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-venus-mars"></i>
+                    <div>
+                        <h3>Jenis Kelamin</h3>
+                        <p>Pria</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-heart"></i>
+                    <div>
+                        <h3>Status</h3>
+                        <p>Mahasiswa/Pelajar</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div>
+                        <h3>Pendidikan Terakhir</h3>
+                        <p>SMA</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hobbies">
+            <h2>Hobi</h2>
+            <p style="text-align: center; margin-bottom: 40px; font-size: 1.15rem; color: var(--text-light-subtle);">Menyelami minat dan aktivitas yang mengisi waktu luang saya dan membentuk siapa diri saya.</p>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <i class="fas fa-headphones"></i>
+                    <h3>Mendengarkan Musik</h3>
+                    <p>Menjelajahi berbagai genre dan menemukan melodi baru yang menginspirasi bagi saya seorang pelajar.</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-play game"></i>
+                    <h3>Bermain Game</h3>
+                    <p>Beberapa game, seperti game desain atau dunia terbuka, memungkinkan pemain untuk berkreasi dan membangun dunia mereka sendiri. Ini bisa menjadi outlet untuk mereka yang tertarik pada seni, desain, atau bahkan dunia virtual.<p>
+                </div>
+                </div>
+                </div>
+        </section>
+
+        <section id="education">
+            <h2>Riwayat Pendidikan</h2>
+            <p style="text-align: center; margin-bottom: 40px; font-size: 1.15rem; color: var(--text-light-subtle);">Perjalanan akademik yang membentuk dasar pengetahuan dan keterampilan saya.</p>
+            <div class="education-timeline">
+                <div class="education-entry">
+                    <div class="education-content">
+                        <h3>Universitas Kristen Indonesia Maluku/UKIM</h3>
+                        <span class="degree">S1 Ilmu Komputer]</span>
+						<h3>SMA Negeri 4 Malteng</h3>
+                        <h3>SMP Negeri 1 Masohi</h3>
+						<h3>SD Kristen 1 Masohi</h3>
+                    </div>
+					</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Hubungi Saya</h2>
+            <p style="text-align: center; margin-bottom: 40px; font-size: 1.15rem; color: var(--text-light-subtle);">Mari terhubung! Jangan ragu untuk mencapai apa yang ada Ingginkan.</p>
+            <div class="contact-links">
+                <a href="https://wa.me/6282198282010" class="contact-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.instagram.com/yustipattiasina?igsh=MXN3MWkzbXAxcWUzag==" class="contact-button" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; SEMANGAT!</p>
+    </footer>
+	
+	<div class="hero-section">
+        <div class="hero-content">
+            <div class="profile-pic-hero" id="profilePicHero">
+                <img src="C:\Users\ZYREX\Pictures\387cb84a-bf9a-4ec2-b045-901d74ea8535.jfif" alt="Foto Profil Utama">
+            </div>
+            <h1>Terima Kasih!</h1>
+        </div>
+    </div>
+
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <h2>Galeri Foto Profil</h2>
+            <div class="gallery-grid" id="profileGalleryGrid">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data foto profil untuk galeri lightbox
+            const profilePhotos = [
+                { src: 'https://via.placeholder.com/600/FF7E5F/FFFFFF?text=Aktivitas+1', alt: 'Foto Aktivitas 1' },
+                { src: 'https://via.placeholder.com/600/FEB47B/FFFFFF?text=Aktivitas+2', alt: 'Foto Aktivitas 2' },
+                { src: 'https://via.placeholder.com/600/F0F2F5/FF7E5F?text=Aktivitas+3', alt: 'Foto Aktivitas 3' },
+                { src: 'https://via.placeholder.com/600/FFFFFF/FF7E5F?text=Aktivitas+4', alt: 'Foto Aktivitas 4' },
+                { src: 'https://via.placeholder.com/600/FF7E5F/FEB47B?text=Aktivitas+5', alt: 'Foto Aktivitas 5' },
+                { src: 'https://via.placeholder.com/600/FEB47B/F0F2F5?text=Aktivitas+6', alt: 'Foto Aktivitas 6' }
+            ];
+
+            const profilePicHero = document.getElementById('profilePicHero');
+            const lightboxOverlay = document.getElementById('lightboxOverlay');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const profileGalleryGrid = document.getElementById('profileGalleryGrid');
+
+            // Fungsi untuk memuat gambar ke galeri lightbox
+            function loadGalleryPhotos() {
+                profileGalleryGrid.innerHTML = ''; // Kosongkan galeri sebelumnya
+                profilePhotos.forEach(photo => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.classList.add('gallery-item');
+                    const img = document.createElement('img');
+                    img.src = photo.src;
+                    img.alt = photo.alt;
+                    galleryItem.appendChild(img);
+                    profileGalleryGrid.appendChild(galleryItem);
+                });
+            }
+
+            // Buka lightbox saat foto profil utama diklik
+            profilePicHero.addEventListener('click', function() {
+                loadGalleryPhotos(); // Muat ulang gambar setiap kali dibuka
+                lightboxOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Nonaktifkan scroll body
+            });
+
+            // Tutup lightbox saat tombol close diklik atau area overlay diklik
+            lightboxClose.addEventListener('click', function() {
+                lightboxOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Aktifkan kembali scroll body
+            });
+
+            lightboxOverlay.addEventListener('click', function(e) {
+                // Tutup hanya jika klik dilakukan di overlay itu sendiri, bukan di dalam konten lightbox
+                if (e.target === lightboxOverlay) {
+                    lightboxOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // --- Fungsionalitas Navigasi & Animasi Scroll ---
+
+            // Smooth scrolling untuk link navigasi
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const navHeight = document.querySelector('nav').offsetHeight;
+                        window.scrollTo({
+                            top: targetElement.offsetTop - navHeight, // Sesuaikan dengan tinggi nav
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Animasi fade-in untuk setiap section saat di-scroll
+            const sections = document.querySelectorAll('main section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Animasi mulai saat 10% dari section terlihat
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        // observer.unobserve(entry.target); // Opsional: Hentikan observasi setelah animasi pertama kali
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Menentukan link navigasi yang aktif berdasarkan posisi scroll
+            function setActiveNavLinkOnScroll() {
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const scrollPosition = window.scrollY + navHeight + 20; // Offset sedikit ke bawah
+
+                document.querySelectorAll('nav a').forEach(anchor => {
+                    const targetId = anchor.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        if (scrollPosition >= targetElement.offsetTop && scrollPosition < targetElement.offsetTop + targetElement.offsetHeight) {
+                            document.querySelectorAll('nav a').forEach(navLink => navLink.classList.remove('active'));
+                            anchor.classList.add('active');
+                        }
+                    }
+                });
+
+                // Pastikan link 'Tentang Saya' aktif jika di paling atas
+                if (window.scrollY < document.getElementById('about').offsetTop - navHeight) {
+                    document.querySelectorAll('nav a').forEach(navLink => navLink.classList.remove('active'));
+                    document.querySelector('nav a[href="#about"]').classList.add('active');
+                }
+            }
+
+            // Panggil saat halaman dimuat dan saat di-scroll
+            window.addEventListener('load', setActiveNavLinkOnScroll);
+            window.addEventListener('scroll', setActiveNavLinkOnScroll);
+            setActiveNavLinkOnScroll(); // Panggilan awal
+        });
+    </script>
+</body>
+</html>
